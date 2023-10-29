@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Car Price Prediction</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet" />
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+      <h1 class="text-3xl font-semibold mb-4 text-center">
+        Car Price Prediction
+      </h1>
+      <form
+        method="POST"
+        action="/predict"
+        class="bg-white shadow-md p-4 rounded-md">
+        <div class="mb-4">
+          <label for="year" class="block font-medium text-gray-700"
+            >Year:</label
+          >
+          <input
+            type="number"
+            name="year"
+            required
+            class="w-full px-3 py-2 border rounded-md" />
+        </div>
+
+        <div class="mb-4">
+          <label for="selling_price" class="block font-medium text-gray-700"
+            >Selling Price (in Lakhs):</label
+          >
+          <input
+            type="number"
+            name="selling_price"
+            required
+            class="w-full px-3 py-2 border rounded-md" />
+        </div>
+
+        <div class="mb-4">
+          <label for="km_driven" class="block font-medium text-gray-700"
+            >Kilometers Driven (in KMs):</label
+          >
+          <input
+            type="number"
+            name="km_driven"
+            required
+            class="w-full px-3 py-2 border rounded-md" />
+        </div>
+
+        <div class="mb-4">
+          <label for="fuel_type" class="block font-medium text-gray-700"
+            >Fuel Type:</label
+          >
+          <select name="fuel_type" class="w-full px-3 py-2 border rounded-md">
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="CNG">CNG</option>
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="transmission" class="block font-medium text-gray-700"
+            >Transmission:</label
+          >
+          <select
+            name="transmission"
+            class="w-full px-3 py-2 border rounded-md">
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+          </select>
+        </div>
+
+        <input
+          type="submit"
+          value="Predict"
+          class="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600 cursor-pointer" />
+      </form>
+
+      {% if prediction %}
+      <h2 class="text-xl font-semibold mt-4">
+        Prediction: {{ prediction }} Lakhs
+      </h2>
+
+      {% endif %}
+    </div>
+  </body>
+</html>
